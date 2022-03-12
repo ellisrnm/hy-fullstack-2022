@@ -18,6 +18,8 @@ const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
+  const avg = (a, b, c) => (1*a + 0*b + -1*c)/(a+b+c)
+  const pos = (a, b, c) => a/(a+b+c)*100
 
   return (
     <div>
@@ -29,6 +31,9 @@ const App = () => {
       <Stats text="good" value={good} />
       <Stats text="neutral" value={neutral} />
       <Stats text="bad" value={bad} />
+      <Stats text="all" value={good + neutral + bad} />
+      <Stats text="average" value={avg(good, neutral, bad)} />
+      <Stats text="positive" value={pos(good, neutral, bad)} />
     </div>
   )
 }
