@@ -5,7 +5,11 @@ const Title = ({text}) => (
 )
 
 const StatisticLine = (props) => (
-  <p>{props.text} {props.value} {props.unit}</p>
+  <tr>
+    <td>{props.text}</td>
+    <td>{props.value}</td>
+    <td>{props.unit}</td>
+  </tr>
 )
 
 const Statistics = (props) => {
@@ -13,12 +17,16 @@ const Statistics = (props) => {
   const pos = (a, d) => a/d*100
   return(
     <div>
-      <StatisticLine text="good" value ={props.good} />
-      <StatisticLine text="neutral" value ={props.neutral} />
-      <StatisticLine text="bad" value ={props.bad} />
-      <StatisticLine text="all" value={props.all} />
-      <StatisticLine text="average" value={avg(props.good, props.bad, props.all)} />
-      <StatisticLine text="positive" value={pos(props.good, props.all)} unit="%" />
+      <table>
+        <tbody>
+          <StatisticLine text="good" value ={props.good} />
+          <StatisticLine text="neutral" value ={props.neutral} />
+          <StatisticLine text="bad" value ={props.bad} />
+          <StatisticLine text="all" value={props.all} />
+          <StatisticLine text="average" value={avg(props.good, props.bad, props.all)} />
+          <StatisticLine text="positive" value={pos(props.good, props.all)} unit="%" />
+        </tbody>
+      </table>
     </div>
   )
 }
